@@ -17,7 +17,7 @@ By evaluating the long-term economic and emissions impacts of transitioning from
 # 4. Input Data
 This analysis draws on multiple publicly available datasets and cost assumptions from U.S. government sources:
 
-1. EPA eGRID 2023 Data
+1. EPA eGRID 2023 Data [egrid 2023 data](egrid2023_data_rev1.xlsx)
 
     Source: U.S. Environmental Protection Agency (EPA)
 
@@ -29,7 +29,7 @@ This analysis draws on multiple publicly available datasets and cost assumptions
     
     Content: Includes plant nameplate capacity, annual CO₂ emissions, location (lat/lon), fuel type, and capacity factor.
 
-2. U.S. Census TIGER/Line Shapefiles
+2. U.S. Census TIGER/Line Shapefiles [here](tl_2024_us_state.zip)
 
     Source: U.S. Census Bureau
     
@@ -54,21 +54,29 @@ This analysis draws on multiple publicly available datasets and cost assumptions
     You can get access to the source file [here.](elec_cost_perf.pdf)
 
 # 5. Scripts in order
-1. CO2avoided.py
-The purpose of this script is to calculate the total tons of CO2eq 
+1. [CO2avoided.py](CO2avoided.py)
+
+    The purpose of this script is to calculate the total tons of CO2eq 
 that can be avoided in 2023 year alone, ranking top 20% (dirtiest) of 
 coal plants with highest CO2eq tons emissions, and monetized the emission as social cost of carbon - SCC.  Then, the csv file created was used to locate the coal plants with highest CO2eq emissions in QGIS in US Map.
 
-2. PV.py
-The purpose of the script is to calculate the total cost of operations - TCO for both coal plant and solar plant for over 40 years period. This script evaluates the financial and environmental trade-offs of replacing U.S. coal-fired power plants with solar photovoltaic (PV) systems. For each coal plant, it calculates the total cost of ownership (TCO) over a 40-year horizon, accounting for fixed and variable O&M costs, fuel costs, and the social cost of carbon (SCC). It then models the equivalent solar plant size needed to replace the coal plant’s generation, computes the associated solar TCO (including capital costs, ITC, O&M, and degradation-adjusted costs), and compares both TCOs. Here, the cost of land to build the solar is not included with the assumption that it will be build on the land plot of current coal plant.
+2. [PV.py](PV.py)
 
-3. analysis.py
-This script analyzes the relationship between CO₂ intensity and the economic benefits (PV Gain) of replacing U.S. coal power plants with solar. Then, it identifies a subset of coal plants that are both high in CO₂ intensity (>1.0 tons/MWh) and show significant economic advantage when replaced with solar (PV Gain > $8 billion). A scatter plot is generated to visualize the correlation between CO₂ intensity and PV Gain, and the correlation coefficient is calculated. Finally, the filtered dataset with high-priority coal plants are exported for further mapping in QGIS.
+    The purpose of the script is to calculate the total cost of operations - TCO for both coal plant and solar plant for over 40 years period. This script evaluates the financial and environmental trade-offs of replacing U.S. coal-fired power plants with solar photovoltaic (PV) systems. For each coal plant, it calculates the total cost of ownership (TCO) over a 40-year horizon, accounting for fixed and variable O&M costs, fuel costs, and the social cost of carbon (SCC). It then models the equivalent solar plant size needed to replace the coal plant’s generation, computes the associated solar TCO (including capital costs, ITC, O&M, and degradation-adjusted costs), and compares both TCOs. Here, the cost of land to build the solar is not included with the assumption that it will be build on the land plot of current coal plant.
+
+3. [analysis.py](analysis.py)
+
+    This script analyzes the relationship between CO₂ intensity and the economic benefits (PV Gain) of replacing U.S. coal power plants with solar. Then, it identifies a subset of coal plants that are both high in CO₂ intensity (>1.0 tons/MWh) and show significant economic advantage when replaced with solar (PV Gain > $8 billion). A scatter plot is generated to visualize the correlation between CO₂ intensity and PV Gain, and the correlation coefficient is calculated. Finally, the filtered dataset with high-priority coal plants are exported for further mapping in QGIS.
 
 ![correlation graph](pv_vs_CO2_intensity.png)
 
-# 6. QGIS Maps
+# 6. Outputfiles and QGIS Maps
+## CSV files
+1. 'coalPP_US.csv' and 'top20_dirtiest coal plants.csv' from first script 'CO2avoided.py' are used as input layers to produce the distribution of coal power plants across US in QGIS.
+2. "coal_to_solar_pv_gain.csv" from second script 'PV.py' is used in the third script 'analysis.py' for further analysis.
+3. 'analysis.y' script produce one graph (pv_vs_CO2_intensity.png) about the correleration between carbon intensity and present value gain for all coal plants in US, one csv file 'pv_CO2_intensity_analysis.csv' which is then filtered to produce coal plants whose carbon intensity is higher then 1 and PV gain higher then 8 billion $. The filtered csv 'filtered_by_highest_TCO.csv' is used to demonstrate coal plants to be considered to replace in QGIS map in the states they are located with the name of the coal plant.
 
+## Maps
 1. Coal Power Plants in US.
 ![Coal plants across US](CoalPP_US.png)
 
