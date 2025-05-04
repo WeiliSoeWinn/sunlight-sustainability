@@ -46,9 +46,7 @@ coal_price_per_mmbtu = 2.5 # $ - coal price per ton / btu content per ton
 solar_capex_per_mw = 1448 * 1000  # $/kW
 solar_om_per_mw = 17.16 * 1000 # $/kW
 solar_cf = 0.25 # approximately between 20 - 30%
-solar_degradation = 0.005 # 0.5% per year
 itc_rate = 0.30 # 30% Tax credit
-electricity_price = 50
 years = range(0, 40)
 
 results = []
