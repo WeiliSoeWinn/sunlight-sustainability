@@ -66,7 +66,8 @@ coal plants with highest CO2eq tons emissions, and monetized the emission as soc
 
 3. [analysis.py](analysis.py)
 
-    This script analyzes the relationship between CO₂ intensity and the economic benefits (PV Gain) of replacing U.S. coal power plants with solar. Then, it identifies a subset of coal plants that are both high in CO₂ intensity (>1.0 tons/MWh) and show significant economic advantage when replaced with solar (PV Gain > $8 billion). A scatter plot is generated to visualize the correlation between CO₂ intensity and PV Gain, and the correlation coefficient is calculated. Finally, the filtered dataset with high-priority coal plants are exported for further mapping in QGIS.
+    This script analyzes the relationship between CO₂ intensity and the economic benefits (PV Gain) of replacing U.S. coal power plants with solar. Then, it identifies a subset of coal plants that are both high in CO₂ intensity (>1.0 tons/MWh) and show significant economic advantage when replaced with solar (PV Gain > $8 billion). 
+    The scatter plot below is generated to visualize the correlation between CO₂ intensity and PV Gain, and the correlation coefficient is calculated. Finally, the filtered dataset with high-priority coal plants are exported for further mapping in QGIS.
 
 ![correlation graph](pv_vs_CO2_intensity.png)
 
@@ -77,13 +78,13 @@ coal plants with highest CO2eq tons emissions, and monetized the emission as soc
 3. 'analysis.y' script produce one graph (pv_vs_CO2_intensity.png) about the correleration between carbon intensity and present value gain for all coal plants in US, one csv file 'pv_CO2_intensity_analysis.csv' which is then filtered to produce coal plants whose carbon intensity is higher then 1 and PV gain higher then 8 billion $. The filtered csv 'filtered_by_highest_TCO.csv' is used to demonstrate coal plants to be considered to replace in QGIS map in the states they are located with the name of the coal plant.
 
 ## Maps
-1. Coal Power Plants in US.
+1. Coal Power Plants in US. - Green points in this map shows the distribution of all coal power plants in US, and the white dots represent the top 20% dirtiest coal plants in US.
 ![Coal plants across US](CoalPP_US.png)
 
-2. Coal Power Plants with highest CO2eq emissions.
+2. Coal Power Plants with highest CO2eq emissions. - This map represents the coal plants with highest CO2eq emissions with size of the circles representing the higher CO2eq emissions.
 ![20% of Coal plants with highest CO2eq emissions.](CoalPP_highest_CO2_emissions_2023.png)
 
-3. Coal Plants with highest carbon intensity and Total Cost of Operation over 40 years.
+3. Coal Plants with highest carbon intensity and Total Cost of Operation over 40 years. - This map demonstrate coal plants with highest present value gain of over 8 billions$ and carbon intensity higher than 1. 
 ![Coal plants to be considered.](CoalPP_replaced.png)
 
 # 7. Results and Analysis
